@@ -605,6 +605,7 @@ public class UpgradeTool {
         //should never happen - just in case
         continue;
       }
+
       FileStatus[] buckets = fs.listStatus(delta.getPath(), new PathFilter() {
         @Override
         public boolean accept(Path path) {
