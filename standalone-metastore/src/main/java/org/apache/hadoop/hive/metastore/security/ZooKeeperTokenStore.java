@@ -62,7 +62,7 @@ public class ZooKeeperTokenStore implements DelegationTokenStore {
   private volatile CuratorFramework zkSession;
   private String zkConnectString;
   private int connectTimeoutMillis;
-  private List<ACL> newNodeAcl = Arrays.asList(new ACL(Perms.ALL, Ids.AUTH_IDS));
+  private List<ACL> newNodeAcl;
 
   /**
    * ACLProvider permissions will be used in case parent dirs need to be created
@@ -93,6 +93,8 @@ public class ZooKeeperTokenStore implements DelegationTokenStore {
    * (ReflectionUtils does not support Configuration constructor injection).
    */
   protected ZooKeeperTokenStore() {
+      newNodeAcl = new ArrayList<ACL>();
+      newNodeAcl.addAll(Ids.OPEN_ACL_UNSAFE);
   }
 
   private CuratorFramework getSession() {

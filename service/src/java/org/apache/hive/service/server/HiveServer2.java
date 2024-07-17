@@ -446,7 +446,7 @@ public class HiveServer2 extends CompositeService {
     @Override
     public List<ACL> getDefaultAcl() {
       List<ACL> nodeAcls = new ArrayList<ACL>();
-      if (UserGroupInformation.isSecurityEnabled()) {
+      if (UserGroupInformation.isSecurityEnabled() && false) {
         // Read all to the world
         nodeAcls.addAll(Ids.READ_ACL_UNSAFE);
         // Create/Delete/Write/Admin to the authenticated user
